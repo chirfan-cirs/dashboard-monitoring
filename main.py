@@ -1,7 +1,7 @@
 import bmkg
 
 """
-Main Application For Data Scrapping Website BMKG
+Main Application For Data Scrapping Website BMKG Done
 """
 
 if __name__ == "__main__":
