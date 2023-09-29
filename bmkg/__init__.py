@@ -1,9 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 
+
 def extrac_data():
     try:
         link = requests.get('https://www.bmkg.go.id/')
+        # print(link.status_code)  # Cek Status Request
     except Exception:
         return None
 
@@ -30,7 +32,7 @@ def extrac_data():
                 magnitude = res.text
             elif i == 2:
                 kedalaman = res.text
-            elif i  == 3:
+            elif i == 3:
                 kordinat = res.text.split(' - ')
                 ls = kordinat[0]
                 bt = kordinat[1]
@@ -40,7 +42,6 @@ def extrac_data():
                 dirasakan = res.text
             i = i + 1
 
-
     data = dict()
     data['tanggal'] = tanggal
     data['waktu'] = waktu
@@ -49,8 +50,8 @@ def extrac_data():
     data['kordinat'] = {'ls': ls, 'bt': bt}
     data['lokasi'] = lokasi
     data['dirasakan'] = dirasakan
-
     return data
+
 
 def view_data(result):
     print("Data BMKG")
@@ -62,27 +63,6 @@ def view_data(result):
     print(f"BT : {result['kordinat']['bt']}")
     print(f"Lokasi : {result['lokasi']}")
     print(f"dirasakan : {result['dirasakan']}")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # import requests
