@@ -1,7 +1,7 @@
 import detik
 import bmkg
 """
-Main Application For Data Scrapping Data from Detik.com
+Main Application For Data Scrapping Data from Detik.com and BMKG
 """
 
 if __name__ == "__main__":
