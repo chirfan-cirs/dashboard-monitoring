@@ -1,11 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-
-def extrac_data():
+def extract_data():
     try:
-        link = requests.get('https://www.detik.com/')
-        # print(link.status_code)
+        link = requests.get("https://www.detik.com/")
     except Exception:
         return None
 
@@ -14,7 +12,7 @@ def extrac_data():
         result = src.find('div', {'class': 'box cb-mostpop'})
         result = result.findChildren('a')
 
-        i = 1
+        i = 0
         media1 = None
         media2 = None
         media3 = None
@@ -22,35 +20,84 @@ def extrac_data():
         media5 = None
 
         for res in result:
-            # print(i, res)
-            if i == 1:
-                media1 = res.text.strip()  # Strip Method is used for delete all the white space
-            elif i == 2:
+            if i == 0:
+                media1 = res.text.strip()
+            elif i == 1:
                 media2 = res.text.strip()
-            elif i == 3:
+            elif i == 2:
                 media3 = res.text.strip()
-            elif i == 4:
+            elif i == 3:
                 media4 = res.text.strip()
-            elif i == 5:
+            elif i == 4:
                 media5 = res.text.strip()
             i = i + 1
 
-    data = dict()
-    data['one'] = media1
-    data['two'] = media2
-    data['three'] = media3
-    data['four'] = media4
-    data['five'] = media5
-    return data
-
+        data = dict()
+        data['one'] = media1
+        data['two'] = media2
+        data['three'] = media3
+        data['four'] = media4
+        data['five'] = media5
+        return data
 
 def view_data(result):
-    # print(result)
-    print("List popular news from Detik.com")
-    i = range(1, 6)
-    res = result['one'], result['two'], result['three'], result['four'], result['five']
-    for x, y in zip(i, res):  # Looping index number
-        print(f"Popular News number {x} : {y}")
+    print(result)
+    print(f"Berita Ke-1: {result['one']}")
+    print(f"Berita Ke-2: {result['two']}")
+    print(f"Berita Ke-3: {result['three']}")
+    print(f"Berita Ke-4: {result['four']}")
+    print(f"Berita Ke-5: {result['five']}")
+
+
+# def extrac_data():
+#     try:
+#         link = requests.get('https://www.detik.com/')
+#         # print(link.status_code)
+#     except Exception:
+#         return None
+#
+#     if link.status_code == 200:
+#         src = BeautifulSoup(link.text, 'html.parser')
+#         result = src.find('div', {'class': 'box cb-mostpop'})
+#         result = result.findChildren('a')
+#
+#         i = 1
+#         media1 = None
+#         media2 = None
+#         media3 = None
+#         media4 = None
+#         media5 = None
+#
+#         for res in result:
+#             # print(i, res)
+#             if i == 1:
+#                 media1 = res.text.strip()  # Strip Method is used for delete all the white space
+#             elif i == 2:
+#                 media2 = res.text.strip()
+#             elif i == 3:
+#                 media3 = res.text.strip()
+#             elif i == 4:
+#                 media4 = res.text.strip()
+#             elif i == 5:
+#                 media5 = res.text.strip()
+#             i = i + 1
+#
+#     data = dict()
+#     data['one'] = media1
+#     data['two'] = media2
+#     data['three'] = media3
+#     data['four'] = media4
+#     data['five'] = media5
+#     return data
+#
+#
+# def view_data(result):
+#     # print(result)
+#     print("List popular news from Detik.com")
+#     i = range(1, 6)
+#     res = result['one'], result['two'], result['three'], result['four'], result['five']
+#     for x, y in zip(i, res):  # Looping index number
+#         print(f"Popular News number {x} : {y}")
 
 
 # def extrac_data():
