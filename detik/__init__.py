@@ -41,8 +41,7 @@ def extract_data():
         return data
 
 def view_data(result):
-    print(result)
-
+    # print(result)
     print(f"Berita Ke-1: {result['one']}")
     print(f"Berita Ke-2: {result['two']}")
     print(f"Berita Ke-3: {result['three']}")
